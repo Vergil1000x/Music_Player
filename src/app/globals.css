@@ -2,26 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .trns-op {
+    transition: all 0.25s cubic-bezier(.5, -0.25, .5, 1.25);
+  }
+
+  .trns-op2 {
+    transition: all 0.1s cubic-bezier(.5, -0.25, .5, 1.25);
+  }
+
+  .scrolling-text {
+    display: inline-block;
+    white-space: nowrap;
+    /* Prevent line breaks */
+    overflow: hidden;
+    /* Hide overflow */
+    animation: scroll 10s linear infinite;
+    /* Adjust duration as needed */
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(100%);
+      /* Start off-screen */
+    }
+
+    to {
+      transform: translateX(-100%);
+      /* End off-screen */
+    }
+  }
+
+
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 }
